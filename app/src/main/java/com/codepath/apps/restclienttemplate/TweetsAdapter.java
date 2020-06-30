@@ -71,18 +71,21 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         ImageView imageViewProfileImage;
         TextView textViewBody;
         TextView textViewScreenName;
+        TextView textViewRelativeTime;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             imageViewProfileImage = itemView.findViewById(R.id.imageViewProfileImage);
             textViewBody = itemView.findViewById(R.id.textViewBody);
             textViewScreenName = itemView.findViewById(R.id.textViewScreenName);
+            textViewRelativeTime = itemView.findViewById(R.id.textViewRelativeTime);
         }
 
         // Take each attribute of the tweet and use those values to bind them to the screen
         public void bind(Tweet tweet) {
             textViewBody.setText(tweet.body);
             textViewScreenName.setText(tweet.user.screenName);
+            textViewRelativeTime.setText(tweet.getRelativeTimeAgo());
 
             // Loading external image into imageView
             String imageURL = tweet.user.profileImageUrl;

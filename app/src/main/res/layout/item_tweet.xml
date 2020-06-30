@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
-    android:layout_marginStart="1dp">
+    android:layout_margin="5dp">
 
     <ImageView
         android:id="@+id/imageViewProfileImage"
@@ -36,4 +35,23 @@
         android:layout_marginTop="2dp"
         android:layout_toEndOf="@+id/imageViewProfileImage"
         tools:text="this is my tweet" />
+
+    <TextView
+        android:id="@+id/textViewDot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_toEndOf="@+id/textViewScreenName"
+        android:text=" • " />
+
+    <TextView
+        android:id="@+id/textViewRelativeTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_toEndOf="@+id/textViewDot" />
 </RelativeLayout>
