@@ -50,4 +50,15 @@ dependencies {
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
     implementation 'com.facebook.stetho:stetho:1.5.1'
+
+    // pull-to-refresh
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+}
+
+//pull-to-refresh
+allprojects {
+    repositories {
+        // requires Gradle v4.1+
+        google()
+    }
 }
