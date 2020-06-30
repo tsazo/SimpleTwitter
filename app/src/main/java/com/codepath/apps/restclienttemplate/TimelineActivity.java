@@ -1,5 +1,6 @@
 package com.codepath.apps.restclienttemplate;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -7,6 +8,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcel;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,6 +19,7 @@ import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +29,9 @@ import okhttp3.Headers;
 public class TimelineActivity extends AppCompatActivity {
 
     public static final String TAG = "TimelineActivity";
+
+    // REQUEST_CODE can be any value we like, used to determine the result type later
+    private final int REQUEST_CODE = 20;
 
     TwitterClient client;
     RecyclerView recyclerViewTweets;
@@ -77,6 +83,25 @@ public class TimelineActivity extends AppCompatActivity {
         return true;
     }
 
+    // Time to handle the result of the sub-activity
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
+            // Get data from the intent (tweet)
+            Tweet tweet = Parcels.unwrap(data.getParcelableExtra("tweet"));
+
+            // Update RV with the tweet
+            // Modify data source of tweets
+            tweets.add(0, tweet);
+
+            // Update the adapter
+            adapter.notifyItemInserted(0);
+            recyclerViewTweets.smoothScrollToPosition(0);
+        }
+        // REQUEST_CODE is defined above
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle presses on the action bar items
@@ -85,13 +110,12 @@ public class TimelineActivity extends AppCompatActivity {
                 // When Compose icon has been selected
                 // Navigate to compose activity
                 Intent intent = new Intent(this, ComposeActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, REQUEST_CODE);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
-
     // Gets Tweets from Twitter API and displays it in TimelineActivity
     private void populateHomeTimeline() {
         client.getHomeTimeline(new JsonHttpResponseHandler() {
