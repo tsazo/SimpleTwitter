@@ -34,6 +34,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
     }
+
 }
 
 dependencies {
@@ -53,11 +54,13 @@ dependencies {
 
     // pull-to-refresh
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+
 }
 
 //pull-to-refresh
 allprojects {
     repositories {
+        jcenter()
         // requires Gradle v4.1+
         google()
     }
