@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.codepath.apps.restclienttemplate.models.Tweet;
+import com.codepath.apps.restclienttemplate.models.User;
 
 import java.util.List;
 
@@ -71,6 +72,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         ImageView imageViewProfileImage;
         TextView textViewBody;
         TextView textViewScreenName;
+        TextView textViewName;
         TextView textViewRelativeTime;
 
         public ViewHolder(@NonNull View itemView) {
@@ -78,13 +80,15 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             imageViewProfileImage = itemView.findViewById(R.id.imageViewProfileImage);
             textViewBody = itemView.findViewById(R.id.textViewBody);
             textViewScreenName = itemView.findViewById(R.id.textViewScreenName);
+            textViewName = itemView.findViewById(R.id.textViewName);
             textViewRelativeTime = itemView.findViewById(R.id.textViewRelativeTime);
         }
 
         // Take each attribute of the tweet and use those values to bind them to the screen
         public void bind(Tweet tweet) {
             textViewBody.setText(tweet.body);
-            textViewScreenName.setText(tweet.user.screenName);
+            textViewScreenName.setText("@"+ tweet.user.screenName);
+            textViewName.setText(tweet.user.name);
             textViewRelativeTime.setText(tweet.getRelativeTimeAgo());
 
             // Loading external image into imageView

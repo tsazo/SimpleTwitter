@@ -9,6 +9,8 @@ import com.github.scribejava.apis.FlickrApi;
 import com.github.scribejava.apis.TwitterApi;
 import com.github.scribejava.core.builder.api.BaseApi;
 
+import org.json.JSONArray;
+
 /*
  * 
  * This is the object responsible for communicating with a REST API. 

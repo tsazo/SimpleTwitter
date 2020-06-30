@@ -23,7 +23,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="5dp"
         android:layout_marginTop="0dp"
-        android:layout_toEndOf="@+id/imageViewProfileImage"
+        android:layout_toEndOf="@+id/textViewName"
         tools:text="trinsazo" />
 
     <TextView
@@ -53,5 +53,16 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
-        android:layout_toEndOf="@+id/textViewDot" />
+        android:layout_toEndOf="@+id/textViewDot"
+        tools:text="time" />
+
+    <TextView
+        android:id="@+id/textViewName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="0dp"
+        android:layout_toEndOf="@+id/imageViewProfileImage"
+        tools:text="abolish" />
 </RelativeLayout>
