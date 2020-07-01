@@ -103,6 +103,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
                     .into(imageViewProfileImage);
 
             if(tweet.media.size() > 0){
+                imageViewMedia.setVisibility(View.VISIBLE);
                 String embeddedImageURL = tweet.media.get(0).baseURL;
                 Log.i("TweetsAdapter", "baseURl: " + embeddedImageURL);
                 Glide.with(context).load(embeddedImageURL)

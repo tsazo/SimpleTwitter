@@ -82,7 +82,7 @@ public class TimelineActivity extends AppCompatActivity {
                 Log.i(TAG, "onLoadMore: " + page);
 
                 //  --> Send the request including an offset value (i.e `page`) as a query parameter.
-                loadNextDataFromApi(page);
+                loadNextDataFromApi();
             }
         };
 
@@ -94,7 +94,7 @@ public class TimelineActivity extends AppCompatActivity {
 
     // Append the next page of data into the adapter
     // This method sends out a network request and appends new data items to your adapter.
-    public void loadNextDataFromApi(int offset) {
+    public void loadNextDataFromApi() {
         // Send an API request to retrieve appropriate paginated data
         client.getNextPageOfTweets(new JsonHttpResponseHandler() {
             @Override
@@ -117,7 +117,7 @@ public class TimelineActivity extends AppCompatActivity {
             public void onFailure(int statusCode, Headers headers, String response, Throwable throwable) {
                 Log.e(TAG, "onFailure for loadMoreData", throwable);
             }
-        }, tweets.get(tweets.size() - 1).id);
+        }, tweets.get(tweets.size()-1).id);
     }
 
     // Adds items to menu bar
