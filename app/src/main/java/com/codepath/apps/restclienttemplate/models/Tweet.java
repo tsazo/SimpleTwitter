@@ -33,23 +33,15 @@ public class Tweet {
         tweet.user = User.fromJson(jsonObject.getJSONObject("user"));
 
         try{
-            tweet.media = getMedia(jsonObject.getJSONObject("extended_entities"));
+            tweet.media = Media.getMedia(jsonObject.getJSONObject("extended_entities"));
         } catch (JSONException e){
             tweet.media = new ArrayList<>();
-        } finally {
-
         }
 
         return tweet;
     }
 
-    // Gets the JSONArray of media JSONObjects
-    private static List<Media> getMedia(JSONObject extended_entities) {
-        Log.i("Tweet", "GOT EXTENDED ENTITIES");
-
-        return new ArrayList<>();
-    }
-
+    // Build the list of Tweets that will appear in the Timeline
     public static List<Tweet> fromJsonArray(JSONArray jsonArray) throws JSONException {
         List<Tweet> tweets = new ArrayList<>();
 

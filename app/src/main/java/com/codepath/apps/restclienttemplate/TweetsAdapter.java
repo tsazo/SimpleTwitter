@@ -1,6 +1,7 @@
 package com.codepath.apps.restclienttemplate;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.codepath.apps.restclienttemplate.models.Tweet;
 import com.codepath.apps.restclienttemplate.models.User;
+
+import org.json.JSONException;
 
 import java.util.List;
 
@@ -70,6 +73,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imageViewProfileImage;
+        ImageView imageViewMedia;
         TextView textViewBody;
         TextView textViewScreenName;
         TextView textViewName;
@@ -82,6 +86,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             textViewScreenName = itemView.findViewById(R.id.textViewScreenName);
             textViewName = itemView.findViewById(R.id.textViewName);
             textViewRelativeTime = itemView.findViewById(R.id.textViewRelativeTime);
+            imageViewMedia = itemView.findViewById(R.id.imageViewMedia);
         }
 
         // Take each attribute of the tweet and use those values to bind them to the screen
@@ -96,6 +101,18 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             Glide.with(context).load(imageURL)
                     .fitCenter()
                     .into(imageViewProfileImage);
+
+            if(tweet.media.size() > 0){
+                String embeddedImageURL = tweet.media.get(0).baseURL;
+                Log.i("TweetsAdapter", "baseURl: " + embeddedImageURL);
+                Glide.with(context).load(embeddedImageURL)
+                        .fitCenter()
+                        .into(imageViewMedia);
+            } else {
+                imageViewMedia.setVisibility(View.GONE);
+            }
+
+
         }
     }
 }
