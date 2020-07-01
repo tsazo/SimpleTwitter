@@ -1,6 +1,7 @@
 package com.codepath.apps.restclienttemplate.models;
 
 import android.text.format.DateUtils;
+import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -19,7 +20,7 @@ public class Tweet {
     public String body;
     public String createdAt;
     public User user;
-    //public Media media;
+    public List<Media> media;
 
     // empty constructor needed by the Parceler library
     public Tweet() {}
@@ -30,9 +31,23 @@ public class Tweet {
         tweet.body = jsonObject.getString("text");
         tweet.createdAt = jsonObject.getString("created_at");
         tweet.user = User.fromJson(jsonObject.getJSONObject("user"));
-        //tweet.media  = User.fromJson(jsonObject.getJSONObject("extended_entities"));
+
+        try{
+            tweet.media = getMedia(jsonObject.getJSONObject("extended_entities"));
+        } catch (JSONException e){
+            tweet.media = new ArrayList<>();
+        } finally {
+
+        }
 
         return tweet;
+    }
+
+    // Gets the JSONArray of media JSONObjects
+    private static List<Media> getMedia(JSONObject extended_entities) {
+        Log.i("Tweet", "GOT EXTENDED ENTITIES");
+
+        return new ArrayList<>();
     }
 
     public static List<Tweet> fromJsonArray(JSONArray jsonArray) throws JSONException {
