@@ -63,7 +63,7 @@ public class TweetDetailsActivity extends AppCompatActivity {
         // On Click Listener for the attached media
         //mediaListener();
 
-        // Set click listener on ImageView
+        // Set click listener on retweet image
         Log.i(TAG, "right before onclick");
         imageViewRetweet.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,15 +76,15 @@ public class TweetDetailsActivity extends AppCompatActivity {
                         Log.i(TAG, "onSuccess Retweet");
 //                        try {
 //                            Tweet tweet = Tweet.fromJson(json.jsonObject);
-//                            Log.i(TAG, "Published tweet says: " + tweet.body);
+//                            Log.i(TAG, "Retweeted tweet says: " + tweet.body);
 //
 //                            // Prepare data intent
 //                            Intent intent = new Intent();
 //
 //                            // Pass relevant data back as a result
 //                            intent.putExtra("tweet", Parcels.wrap(tweet));
-//                            // Activity finished ok, return the data
 //
+//                            // Activity finished ok, return the data
 //                            // set result code and bundle data for response
 //                            setResult(RESULT_OK, intent);
 //
@@ -140,12 +140,12 @@ public class TweetDetailsActivity extends AppCompatActivity {
         }
     }
 
-    // OnClickListener to play movie trailer
-    private void mediaListener(){
-        imageViewMedia.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Create the activity
+    // OnClickListener to make media screen appear
+//    private void mediaListener(){
+//        imageViewMedia.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                 Create the activity
 //                Intent intent = new Intent(TweetDetailsActivity.this, MovieTrailerActivity.class);
 //
 //                Log.d("MovieDetailsActivity", "Intent made!");
@@ -157,8 +157,8 @@ public class TweetDetailsActivity extends AppCompatActivity {
 //
 //                // Display the new activity
 //                startActivity(intent);
-            }
-        });
-    }
+//            }
+//        });
+//    }
 
 }

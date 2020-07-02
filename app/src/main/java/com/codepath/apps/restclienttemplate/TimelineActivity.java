@@ -138,6 +138,7 @@ public class TimelineActivity extends AppCompatActivity {
             // Update RV with the tweet
             // Modify data source of tweets
             tweets.add(0, tweet);
+            //Log.i(TAG, "Tweet says: "+ tweet.body);
 
             // Update the adapter
             adapter.notifyItemInserted(0);
