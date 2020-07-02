@@ -1,5 +1,6 @@
 package com.codepath.apps.restclienttemplate.models;
 
+import android.os.Parcelable;
 import android.text.format.DateUtils;
 import android.util.Log;
 

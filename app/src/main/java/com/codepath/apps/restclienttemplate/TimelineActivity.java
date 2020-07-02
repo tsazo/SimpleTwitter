@@ -117,7 +117,7 @@ public class TimelineActivity extends AppCompatActivity {
             public void onFailure(int statusCode, Headers headers, String response, Throwable throwable) {
                 Log.e(TAG, "onFailure for loadMoreData", throwable);
             }
-        }, tweets.get(tweets.size()-1).id);
+        }, tweets.get(tweets.size()-1).id - 1);
     }
 
     // Adds items to menu bar
