@@ -1,6 +1,7 @@
 package com.codepath.apps.restclienttemplate;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.codepath.asynchttpclient.RequestParams;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
@@ -73,6 +74,18 @@ public class TwitterClient extends OAuthBaseClient {
 		// Can specify query string params directly or through RequestParams.
 		RequestParams params = new RequestParams();
 		params.put("status", tweetContent);
+		client.post(apiUrl, params, "",handler);
+	}
+
+	// Retweets a tweet
+	public void retweet(String id, JsonHttpResponseHandler handler) {
+		String apiUrl = getApiUrl("statuses/retweet/" + id + ".json");
+		// Can specify query string params directly or through RequestParams.
+		Log.i("TwitterClient", id);
+		RequestParams params = new RequestParams();
+		params.put("id", id);
+
+		// Post request
 		client.post(apiUrl, params, "",handler);
 	}
 
